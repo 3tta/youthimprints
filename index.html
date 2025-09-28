@@ -53,4 +53,203 @@
     }
 
     .home-btn:hover {
-      background: rgba(2
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* أيقونة 3 شحطات */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .home-btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .logo {
+      margin-top: 20px;
+      width: 180px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    main {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    main p {
+      font-size: 1.3em;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .volunteer-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      background-color: #008000;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .volunteer-button:hover {
+      background-color: #006400;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat .number {
+      font-size: 2.2em;
+      color: #000000;
+      font-weight: bold;
+    }
+
+    .stat .label {
+      font-size: 1em;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    footer {
+      margin-top: auto;
+      width: 100%;
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 0.9em;
+      position: relative;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      display: inline-block;
+      vertical-align: middle;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ff0000;
+    }
+
+    .social-icons svg {
+      fill: currentColor;
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>مبادرة بصمات شبابية</h1>
+    <!-- زر الهوم -->
+    <a href="#top" class="home-btn">الرئيسية</a>
+
+    <!-- 3 شحطات للموبايل -->
+    <div class="menu-toggle" onclick="window.location.href='#top'">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <img src="logo.jpg" alt="شعار المبادرة" class="logo" />
+
+  <main>
+    <p>
+      الموقع تحت الإنشاء حاليًا<br>
+      تابعونا قريبًا على <strong>youthimprints.com</strong>
+    </p>
+
+    <a href="https://www.nahno.org/ngo/%D8%A8%D8%B5%D9%85%D8%A7%D8%AA-%D8%B4%D8%A8%D8%A7%D8%A8%D9%8A%D8%A9-70242" target="_blank" class="volunteer-button">
+      تطوع الآن
+    </a>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="number" data-target="4059">0</span>
+        <div class="label">عدد المتقدمين</div>
+      </div>
+      <div class="stat">
+        <span class="number" data-target="565">0</span>
+        <div class="label">عدد الفرص</div>
+      </div>
+      <div class="stat">
+        <span class="number" data-target="31546">0</span>
+        <div class="label">عدد الساعات</div>
+      </div>
+    </div>
+  </main>
+
+<footer>
+  &copy; 2025 جميع الحقوق محفوظة لمبادرة بصمات شبابية
+  <div class="social-icons" aria-label="روابط التواصل الاجتماعي">
+    <!-- روابط السوشال نفسها -->
+  </div>
+</footer>
+
+  <script>
+    const counters = document.querySelectorAll('.number');
+    const speed = 200;
+
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+
+        const increment = Math.ceil(target / speed);
+
+        if (count < target) {
+          counter.innerText = count + increment;
+          setTimeout(updateCount, 20);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+
+      updateCount();
+    });
+  </script>
+
+</body>
+</html>
